@@ -10,6 +10,9 @@ def index():
 def submit():
     message = request.form['message']
     return f'Teşekkürler! Gönderdiğiniz mesaj: {message}'
-
+ 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run()
+    # Heroku'dan gelen PORT ortam değişkenine göre dinleyin
+    port = int(os.environ.get("PORT", 5000))
+    app.run(host='0.0.0.0', port=port)
